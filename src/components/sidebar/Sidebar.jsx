@@ -1,3 +1,4 @@
+import { useContext, useState } from "react"
 import "./sidebar.scss"
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import RoomPreferencesIcon from '@mui/icons-material/RoomPreferences';
@@ -10,8 +11,15 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
 import {Link} from "react-router-dom";
+import {AuthContext} from "../../components/context/AuthContext"
 
 const Sidebar = () => {
+  
+  const authContext = useContext(AuthContext);
+
+  const handleLogout = () => {
+    authContext.logout();
+  };
   return (
     <div className='sidebar'>
       <div className='top'> 
@@ -79,7 +87,7 @@ const Sidebar = () => {
               <span>Profile</span>
             </li>
           </Link>
-          <Link to="/" style={{textDecoration: "none"}}>
+          <Link to="/" onClick={handleLogout} style={{textDecoration: "none"}}>
             <li>
               <LogoutIcon className="icon" />
               <span>Logout</span>

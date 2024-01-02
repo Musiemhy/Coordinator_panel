@@ -39,6 +39,9 @@ const Login = () => {
         <button type="submit">Login</button>
         {error && <span>Wrong email or password</span>}
       </form>
+      <div>
+        <p>Don't have an account? <a href="/register">Register here</a></p>
+      </div>
     </div>
   )
 }
