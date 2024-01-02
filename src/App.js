@@ -5,9 +5,13 @@ import List from "./pages/list/List"
 import Classrooms from "./pages/classrooms/Classrooms"
 import { collection, getDocs } from "firebase/firestore";
 import { db } from './Firebase/Firebase'; 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { doc, addDoc } from "firebase/firestore"; 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import {AuthContext} from "./components/context/AuthContext"
+import Single from './pages/single/Single';
+import Register from './pages/Register/Register';
+
 // import { AuthProvider } from './components/AuthContext';
 // import PrivateRoute from './components/PrivateRoute';
 
@@ -48,16 +52,24 @@ function App() {
 // alert("Document written with ID: ", docRef.id)
 // }
 
+const {currentUser} = useContext(AuthContext)
+
+const RequireAuth = ({children}) => {
+  return currentUser ? children : <Navigate to="/login" />;
+}
+
   return (
     <div className="App">
 
       <BrowserRouter>
         <Routes>
           <Route path='/'>
-            <Route index element={<Home />} />
-            <Route path='login' element={<Login />} />
-            <Route path='list' element={<List />} />
-            <Route path='classrooms' element={<Classrooms />} />
+          <Route path='login' element={<Login />} />
+          <Route path='register' element={<Register />} />
+            <Route index element={<RequireAuth> <Home /> </RequireAuth>} />
+            <Route path='list' element={<RequireAuth> <List /> </RequireAuth>} />
+            <Route path='single' element={<RequireAuth> <Single /> </RequireAuth>} />
+            <Route path='classrooms' element={<RequireAuth> <Classrooms /> </RequireAuth>} />
           </Route>
           {/* Default route for unknown paths */}
           <Route path="*" element={<div>404 Not Found</div>} />

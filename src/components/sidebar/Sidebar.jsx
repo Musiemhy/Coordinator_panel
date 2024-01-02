@@ -9,57 +9,82 @@ import NotificationImportantIcon from '@mui/icons-material/NotificationImportant
 import SettingsIcon from '@mui/icons-material/Settings';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
+import {Link} from "react-router-dom";
 
 const Sidebar = () => {
   return (
     <div className='sidebar'>
-      <div className='top'> <span className='logo'> UniClassFinder</span></div>
+      <div className='top'> 
+      <Link to="/" style={{textDecoration: "none"}}>
+        <span className='logo'> UniClassFinder</span>
+      </Link>
+      </div>
       <hr/>
       <div className='center'> 
         <ul>
           <p className="title">MAIN</p>
-          <li>
-            <DashboardIcon className="icon" />
-            <span>Dashboard</span>
-          </li>
+          <Link to="/" style={{textDecoration: "none"}}>
+            <li>
+              <DashboardIcon className="icon" />
+              <span>Dashboard</span>
+            </li>
+          </Link>
           <p className="title">LISTS</p>
-          <li>
-            <RoomPreferencesIcon className="icon" />
-            <span>Classroom management</span>
+          <Link to="/classrooms" style={{textDecoration: "none"}}>
+            <li>
+              <RoomPreferencesIcon className="icon" />
+              <span>Classroom management</span>
+            </li>
+          </Link>
+          <Link to="/" style={{textDecoration: "none"}}>
+            <li>
+              <BookOnlineIcon className="icon" />
+              <span>Booking Request</span>
+            </li>
+          </Link>
+          <Link to="/" style={{textDecoration: "none"}}>
+            <li>
+              <MeetingRoomIcon className="icon" />
+              <span>Classroom Details</span>
+            </li>
+          </Link>
+          <Link to="/list" style={{textDecoration: "none"}}>
+            <li>
+              <AdminPanelSettingsIcon className="icon" />
+              <span>User Management</span>
+            </li>
+          </Link>
+          <Link to="/" style={{textDecoration: "none"}}>
+            <li>
+              <FeedbackIcon className="icon" />
+              <span>Feedback and Maintenance:</span>
           </li>
-          <li>
-            <BookOnlineIcon className="icon" />
-            <span>Booking Request</span>
-          </li>
-          <li>
-            <MeetingRoomIcon className="icon" />
-            <span>Classroom Details</span>
-          </li>
-          <li>
-            <AdminPanelSettingsIcon className="icon" />
-            <span>User Management</span>
-          </li>
-          <li>
-            <FeedbackIcon className="icon" />
-            <span>Feedback and Maintenance:</span>
-          </li>
-          <li>
-            <NotificationImportantIcon className="icon" />
-            <span>Notifications</span>
-          </li>
-          <li>
-            <SettingsIcon className="icon" />
-            <span>Settings</span>
-          </li>
+          </Link>
+          <Link to="/" style={{textDecoration: "none"}}>
+            <li>
+              <NotificationImportantIcon className="icon" />
+              <span>Notifications</span>
+            </li>
+          </Link>
+          <Link to="/" style={{textDecoration: "none"}}>
+            <li>
+              <SettingsIcon className="icon" />
+              <span>Settings</span>
+            </li>
+          </Link>
           <p className="title">USER</p>
-          <li>
-            <AccountCircleOutlinedIcon className="icon" />
-            <span>Profile</span>
-          </li>
-          <li>
-            <LogoutIcon className="icon" />
-            <span>Logout</span>
-          </li>
+          <Link to="/" style={{textDecoration: "none"}}>
+            <li>
+              <AccountCircleOutlinedIcon className="icon" />
+              <span>Profile</span>
+            </li>
+          </Link>
+          <Link to="/" style={{textDecoration: "none"}}>
+            <li>
+              <LogoutIcon className="icon" />
+              <span>Logout</span>
+            </li>
+          </Link>
         </ul>
       </div>
     </div>
