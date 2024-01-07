@@ -33,14 +33,22 @@ const Login = () => {
 
   return (
     <div className='login'>
-      <form onSubmit={handleLogin}>
-        <input type="text" placeholder="ID Number" onChange={e=>setEmail(e.target.value)}/>
-        <input type="password" placeholder="password" onChange={e=>setPassword(e.target.value)}/>
-        <button type="submit">Login</button>
-        {error && <span>Wrong email or password</span>}
-      </form>
-      <div>
-        <p>Don't have an account? <a href="/register">Register here</a></p>
+      <div className="inputForm">
+          <img src={process.env.PUBLIC_URL + '/unity_header.jpg'} alt="logo" />
+        <div className="content">
+          <p className="app_title">UNITYCLASSFINDER</p>
+          <p className="subtitle">Admin Panel</p>
+          <hr />
+          <form onSubmit={handleLogin}>
+            <label>ID Number</label><input type="text" placeholder="ID Number" onChange={e=>setEmail(e.target.value+"@domain.com")}/>
+            <label>Password</label><input type="password" placeholder="password" onChange={e=>setPassword(e.target.value)}/>
+            <button type="submit">Login</button>
+            {error && <span>Wrong email or password</span>}
+          </form>
+          <div className="link">
+            <p>Don't have an account? <a href="/register">Register here</a></p>
+          </div>
+        </div>
       </div>
     </div>
   )
